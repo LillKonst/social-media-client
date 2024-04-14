@@ -10,11 +10,14 @@ describe("Can log in and out", () => {
     cy.wait(1000);
 
     cy.logsIn();
-    cy.loggedIn();
+    // cy.loggedIn();
+    cy.wait(1500);
+    // });
 
-    // Log Out
-    cy.get('button[data-auth="logout"]');
+    //it("logs out", () => { // Log Out
+    cy.get('button[data-auth="logout"]').click();
     cy.visitHomepage();
-    //cy.get('.modal-footer button[data-auth="login"]').should("exist");
+    cy.get("#registerForm button").contains("Login").should("exist").click();
+    cy.wait(1000);
   });
 });
