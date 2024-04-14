@@ -1,5 +1,7 @@
 # WORKFLOW 
 
+!([Deploy static content to Pages](https://github.com/LillKonst/social-media-client/actions/workflows/pages.yml/badge.svg)
+
 ## Acknowledgemnts
 This project is forked off of https://github.com/NoroffFEU/social-media-client
 
