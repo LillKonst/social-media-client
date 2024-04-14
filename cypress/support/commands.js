@@ -32,12 +32,12 @@ Cypress.Commands.add("visitHomepage", () => {
   cy.wait(1000);
 });
 
-// Logs In Valid
+// // Logs In Valid
 Cypress.Commands.add("logsIn", () => {
   cy.get("#loginModal").should("be.visible");
   cy.get("#loginForm").within(() => {
-    cy.get("#loginEmail").invoke("val", Cypress.env("VALID_EMAIL"));
-    cy.get("#loginPassword").invoke("val", Cypress.env("VALID_PASSWORD"));
+    cy.get("#loginEmail").type("testaccount4567@stud.noroff.no");
+    cy.get("#loginPassword").type("Testaccount4567");
 
     cy.get("button[type=submit]").click();
   });
@@ -45,23 +45,25 @@ Cypress.Commands.add("logsIn", () => {
   cy.wait(2000);
 });
 
-// // Not valid login
-// Cypress.Commands.add("notValidLogin", () => {
-//   cy.get("#loginModal").should("be.visible");
-//   cy.get("#loginForm").within(() => {
-//     cy.get("#loginEmail").invoke("val", Cypress.env("INVALID_EMAIL"));
-//     cy.get("#loginPassword").invoke("val", Cypress.env("INVALID_PASSWORD"));
-//     cy.get("button[type=submit]").click();
-//     cy.wait(1000);
-//   });
+// Not valid login
+Cypress.Commands.add("notValidLogin", () => {
+  cy.get("#loginModal").should("be.visible");
+  cy.get("#loginForm").within(() => {
+    cy.get("#loginEmail").invoke("val", Cypress.env("INVALID_EMAIL"));
+    cy.get("#loginPassword").invoke("val", Cypress.env("INVALID_PASSWORD"));
+    cy.get("button[type=submit]").click();
+    cy.wait(1000);
+  });
 
-//   cy.on("window:alert", (text) => {
-//     expect(text).to.contains(
-//       "Either your username was not found or your password is incorrect",
-//     );
-//   });
-//  });
+  cy.on("window:alert", (text) => {
+    cy.wrap(text).should(
+      "contain",
+      "Either your username was not found or your password is incorrect",
+    );
+  });
+});
 
+// Is logged in
 Cypress.Commands.add("loggedIn", () => {
   cy.window().then((win) => {
     const token = win.localStorage.getItem("token");
@@ -69,5 +71,5 @@ Cypress.Commands.add("loggedIn", () => {
     cy.wrap(token).should("be.a", "string").and("not.be.empty");
   });
 
-  cy.get("h4").should("contain", Cypress.env("USER_NAME"));
+  cy.get('[data-cy="profileName"]').should("contain", "testaccount");
 });

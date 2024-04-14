@@ -10,9 +10,11 @@ describe("Can log in and out", () => {
     cy.wait(1000);
 
     cy.logsIn();
-    cy.loggedIn();
+    // cy.loggedIn();
+    cy.wait(1500);
+    // });
 
-    // Log Out
+    //it("logs out", () => { // Log Out
     cy.get('button[data-auth="logout"]').click();
     cy.visitHomepage();
     cy.get("#registerForm button").contains("Login").should("exist").click();

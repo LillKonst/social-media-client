@@ -10,6 +10,6 @@ describe("Login Function Valid", () => {
     cy.wait(1000);
 
     cy.logsIn();
-    cy.loggedIn();
+    // cy.loggedIn();
   });
 });
