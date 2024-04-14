@@ -13,8 +13,9 @@ describe("Can log in and out", () => {
     cy.loggedIn();
 
     // Log Out
-    cy.get('button[data-auth="logout"]');
+    cy.get('button[data-auth="logout"]').click();
     cy.visitHomepage();
-    //cy.get('.modal-footer button[data-auth="login"]').should("exist");
+    cy.get("#registerForm button").contains("Login").should("exist").click();
+    cy.wait(1000);
   });
 });
