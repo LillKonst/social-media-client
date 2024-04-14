@@ -10,6 +10,8 @@ This project is forked off of https://github.com/NoroffFEU/social-media-client
 
 
 ## Set up
+### To check out this projecy locally, you need to:
+
 1. Clone repository: 
    https://github.com/LillKonst/social-media-client.git
 
