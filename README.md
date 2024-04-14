@@ -1,4 +1,4 @@
-*** Workflow ***
+* Workflow
 
-** Acknowledgements **
-This project is a Fork off [Noroff/social-media-client](https://github.com/NoroffFEU/social-media-client)
+** Acknowledgemnts
+This project is forked off of https://github.com/NoroffFEU/social-media-client
