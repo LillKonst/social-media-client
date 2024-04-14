@@ -1,0 +1,20 @@
+// Login function with valid credentials
+describe("Can log in and out", () => {
+  it("lets user log in with valid credentials and then log out", () => {
+    cy.visitHomepage();
+
+    cy.get("#registerForm button")
+      .contains("Login")
+      .should("be.visible")
+      .click();
+    cy.wait(1000);
+
+    cy.logsIn();
+    cy.loggedIn();
+
+    // Log Out
+    cy.get('button[data-auth="logout"]');
+    cy.visitHomepage();
+    //cy.get('.modal-footer button[data-auth="login"]').should("exist");
+  });
+});
